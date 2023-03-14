@@ -1,0 +1,25 @@
+---
+import projectData from "../../data/data.json";
+
+export async function getStaticPaths() {
+    const projects = projectData.projects;
+
+    return projects.map((project) => {
+        return {
+            params: { name: project.title },
+            props: { project },
+        };
+    });
+}
+
+const { name } = Astro.params;
+const { project } = Astro.props;
+---
+
+<div>
+    <a href="/">Back</a>
+    <h1>{project.title}</h1>
+    <p>{project.desc}</p>
+
+    {project.images.map((index: string) => <img src={index} />)}
+</div>

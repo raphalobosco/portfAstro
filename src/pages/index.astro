@@ -1,15 +1,16 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import projectData from "../data/data.json";
+
+const projects = projectData.projects;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<h1>INDEX page</h1>
+
+	{
+		projects.map((project) => (
+			<a href={"projects/" + project.title}>{project.title}</a>
+		))
+	}
+</Layout>
