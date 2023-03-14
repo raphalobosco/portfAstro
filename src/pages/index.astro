@@ -1,16 +1,14 @@
 ---
+import ProjectsGrid from "../components/ProjectsGrid.astro";
 import Layout from "../layouts/Layout.astro";
-import projectData from "../data/data.json";
-
-const projects = projectData.projects;
 ---
 
 <Layout>
-	<h1>INDEX page</h1>
-
-	{
-		projects.map((project) => (
-			<a href={"projects/" + project.title}>{project.title}</a>
-		))
-	}
+	<div class="home">
+		<h1>
+			Hello, my name is Rapha Lobosco. I am a Senior Product Designer
+			currently based in Dublin.
+		</h1>
+		<ProjectsGrid />
+	</div>
 </Layout>

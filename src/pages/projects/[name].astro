@@ -1,5 +1,7 @@
 ---
+import OtherProjects from "../../components/OtherProjects.astro";
 import projectData from "../../data/data.json";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
     const projects = projectData.projects;
@@ -12,14 +14,44 @@ export async function getStaticPaths() {
     });
 }
 
+const projects = projectData.projects;
 const { name } = Astro.params;
 const { project } = Astro.props;
 ---
 
-<div>
-    <a href="/">Back</a>
-    <h1>{project.title}</h1>
-    <p>{project.desc}</p>
+<Layout>
+    <div class="single-proj">
+        <div class="side">
+            <div class="info">
+                <h1>{project.title}</h1>
+                <p>{project.desc}</p>
 
-    {project.images.map((index: string) => <img src={index} />)}
-</div>
+                <div class="back">
+                    <a href="/">Back</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            {project.images.map((index: string) => <img src={index} />)}
+        </div>
+    </div>
+
+    <div>
+        <h3>More projects</h3>
+        <div class="projects-grid">
+            {
+                projects.map((project) => (
+                    <a href={project.title}>
+                        <div class="item">
+                            <img src={project.photo} alt="" />
+                            <div class="info">
+                                <p class="title">{project.title}</p>
+                                <p class="category">UX, UI</p>
+                            </div>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</Layout>
