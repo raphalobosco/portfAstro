@@ -87,7 +87,7 @@ button {
     padding-bottom: 1px;
 
     @include mq-desktop {
-        padding-inline: 0;
+        padding-inline: 1rem;
     }
 
     @include mq-mobile {
